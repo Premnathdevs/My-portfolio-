@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Premnath P - Computer Science Engineering student portfolio">
+  <title>Premnath P | CSE Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #111827;
+      --card2: #0f172a;
+      --text: #f8fafc;
+      --muted: #a8b3c7;
+      --line: #263244;
+      --accent: #60a5fa;
+      --accent2: #a78bfa;
+      --max: 1100px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, #172554 0, var(--bg) 35%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11,15,25,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav-inner {
+      min-height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: .5px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover { color: white; }
+    .hero {
+      min-height: 88vh; display: grid; place-items: center; padding: 80px 0;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.35fr .65fr; gap: 50px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-block; color: #bfdbfe; background: rgba(96,165,250,.1);
+      border: 1px solid rgba(96,165,250,.25); padding: 7px 12px; border-radius: 999px;
+      font-size: .85rem; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(2.7rem, 7vw, 5.2rem); line-height: 1.02; letter-spacing: -2px; }
+    h1 span { background: linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; color:transparent; }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 22px 0; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line);
+      background: var(--card); font-weight: 700; display: inline-block;
+    }
+    .btn.primary { background: white; color: #0b0f19; border-color: white; }
+    .btn:hover { transform: translateY(-2px); }
+    .profile-card {
+      background: linear-gradient(145deg, rgba(17,24,39,.95), rgba(15,23,42,.8));
+      border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.3);
+    }
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%; display: grid; place-items: center;
+      margin-bottom: 20px; font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg,var(--accent),var(--accent2)); color: #08111f;
+    }
+    .profile-card h3 { margin-bottom: 8px; }
+    .profile-card p { margin: 0; font-size: .95rem; }
+    section { padding: 90px 0; }
+    .section-title { font-size: 2rem; margin-bottom: 10px; }
+    .section-subtitle { color: var(--muted); margin-bottom: 35px; }
+    .grid { display: grid; gap: 20px; }
+    .skills { grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); }
+    .skill, .card {
+      background: rgba(17,24,39,.75); border: 1px solid var(--line);
+      border-radius: 16px; padding: 22px;
+    }
+    .skill strong { display: block; margin-bottom: 5px; }
+    .skill span, .card p, .card li { color: var(--muted); }
+    .projects { grid-template-columns: repeat(auto-fit,minmax(290px,1fr)); }
+    .project-tag {
+      display: inline-block; font-size: .78rem; color: #bfdbfe; margin-bottom: 12px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .card h3 { margin-bottom: 10px; font-size: 1.25rem; }
+    .card ul { padding-left: 18px; margin-top: 12px; }
+    .card li { margin: 6px 0; }
+    .timeline { border-left: 1px solid var(--line); padding-left: 25px; }
+    .timeline-item { margin-bottom: 30px; position: relative; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -31px; top: 7px; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--accent);
+    }
+    .date { color: var(--accent); font-size: .9rem; font-weight: 700; }
+    .contact-box {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .contact-item { padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+    .contact-item small { color: var(--muted); display: block; margin-bottom: 5px; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); text-align: center; }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 0; }
+      .hero-grid, .contact-box { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#home">Premnath<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Computer Science Engineering • Fresher</div>
+        <h1>Hi, I'm <span>Premnath P.</span></h1>
+        <p>
+          Computer Science Engineering student with a strong foundation in Python,
+          SQL, Artificial Intelligence, Machine Learning, and Computer Vision.
+          I enjoy building practical solutions and learning emerging technologies.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/Premnathdevs" target="_blank">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/premnathp37" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">PP</div>
+        <h3>Computer Science Engineer</h3>
+        <p>Interested in AI, Machine Learning, Computer Vision and software development.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">A quick introduction</p>
+      <div class="card">
+        <p>
+          I am a B.Tech Computer Science and Engineering student at Achariya College
+          of Engineering & Technology. I have hands-on experience through academic
+          projects and internships, with a focus on Python, AI, computer vision and
+          web technologies. I am currently looking for opportunities where I can
+          contribute, improve my technical skills and grow as a software professional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">Technologies I work with</p>
+      <div class="grid skills">
+        <div class="skill"><strong>Python</strong><span>Programming & problem solving</span></div>
+        <div class="skill"><strong>SQL</strong><span>Queries & database fundamentals</span></div>
+        <div class="skill"><strong>AI / ML</strong><span>Machine learning fundamentals</span></div>
+        <div class="skill"><strong>Computer Vision</strong><span>OpenCV & object detection</span></div>
+        <div class="skill"><strong>YOLO</strong><span>Real-time object detection</span></div>
+        <div class="skill"><strong>OpenCV</strong><span>Image & video processing</span></div>
+        <div class="skill"><strong>NumPy</strong><span>Numerical computing</span></div>
+        <div class="skill"><strong>HTML & CSS</strong><span>Web fundamentals</span></div>
+        <div class="skill"><strong>Git & GitHub</strong><span>Version control</span></div>
+        <div class="skill"><strong>Jupyter Notebook</strong><span>Development & experimentation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Selected academic and practical work</p>
+      <div class="grid projects">
+        <article class="card">
+          <span class="project-tag">AI • Computer Vision</span>
+          <h3>AI-Based Animal Detection and Alert System</h3>
+          <p>
+            A real-time computer vision system designed to detect animals near
+            agricultural areas and provide alerts for village and farm safety.
+          </p>
+          <ul>
+            <li>Processed live webcam/video streams using Python and OpenCV.</li>
+            <li>Used YOLO for real-time animal detection and confidence filtering.</li>
+            <li>Added continuous-detection validation and notification cooldown.</li>
+            <li>Included image capture and alert functionality.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="project-tag">Python • OpenCV</span>
+          <h3>Real-Time Object Detection System</h3>
+          <p>
+            A computer vision application that processes live camera input and
+            identifies objects in real time.
+          </p>
+          <ul>
+            <li>Captured and processed live webcam frames.</li>
+            <li>Applied image processing using OpenCV and NumPy.</li>
+            <li>Displayed detected objects in real time.</li>
+            <li>Focused on practical computer vision implementation.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Internship Experience</h2>
+      <p class="section-subtitle">Hands-on industry exposure</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">Internship • Web Development</div>
+          <h3>Brainery Spot Technology Pvt. Ltd.</h3>
+          <p>
+            Worked on responsive web-based applications, user-friendly interfaces,
+            usability, performance and testing collaboration.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Internship • AI Development</div>
+          <h3>Novitech R&D Pvt. Ltd.</h3>
+          <p>
+            Worked with data collection, preprocessing, analysis, computer vision
+            and image processing techniques for AI projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">Academic background</p>
+      <div class="grid projects">
+        <div class="card">
+          <h3>B.Tech — Computer Science & Engineering</h3>
+          <p>Achariya College of Engineering & Technology</p>
+          <p>Pondicherry University • 2022–2026</p>
+        </div>
+        <div class="card">
+          <h3>Higher Secondary Education</h3>
+          <p>St. Joseph's Higher Secondary School, Cuddalore</p>
+          <p>Completed 2022</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Open to opportunities and technical discussions</p>
+      <div class="contact-box">
+        <a class="contact-item" href="mailto:premnath2005th@gmail.com">
+          <small>Email</small>
+          premnath2005th@gmail.com
+        </a>
+        <a class="contact-item" href="tel:+919600468126">
+          <small>Phone</small>
+          +91 96004 68126
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/premnathp37" target="_blank">
+          <small>LinkedIn</small>
+          linkedin.com/in/premnathp37
+        </a>
+        <a class="contact-item" href="https://github.com/Premnathdevs" target="_blank">
+          <small>GitHub</small>
+          github.com/Premnathdevs
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Premnath P. Built with HTML & CSS.
+</footer>
+
+</body>
+</html>
